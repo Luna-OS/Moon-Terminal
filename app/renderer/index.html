@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'" />
+    <title>Moon Terminal</title>
+    <link rel="stylesheet" href="../node_modules/@xterm/xterm/css/xterm.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="titlebar">
+      <div class="titlebar-title">
+        <span class="titlebar-icon">🌙</span>
+        <span>Moon Terminal</span>
+      </div>
+      <div class="titlebar-controls">
+        <button id="btn-min" title="Minimieren" aria-label="Minimieren">&#x2013;</button>
+        <button id="btn-max" title="Maximieren" aria-label="Maximieren">&#x25A1;</button>
+        <button id="btn-close" class="close" title="Schließen" aria-label="Schließen">&#x2715;</button>
+      </div>
+    </div>
+    <div id="terminal"></div>
+    <script src="../node_modules/@xterm/xterm/lib/xterm.js"></script>
+    <script src="../node_modules/@xterm/addon-fit/lib/addon-fit.js"></script>
+    <script src="renderer.js"></script>
+  </body>
+</html>

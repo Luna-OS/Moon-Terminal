@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #10121c;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.titlebar {
+  -webkit-app-region: drag;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #14172a;
+  border-bottom: 1px solid #262a44;
+  padding-left: 12px;
+  color: #d8dee9;
+  font-size: 12px;
+  user-select: none;
+}
+
+.titlebar-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.titlebar-icon {
+  font-size: 13px;
+}
+
+.titlebar-controls {
+  -webkit-app-region: no-drag;
+  display: flex;
+  height: 100%;
+}
+
+.titlebar-controls button {
+  width: 44px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  color: #d8dee9;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.titlebar-controls button:hover {
+  background: #262a44;
+}
+
+.titlebar-controls button.close:hover {
+  background: #f7768e;
+  color: #10121c;
+}
+
+#terminal {
+  height: calc(100% - 32px);
+  padding: 8px;
+}
+
+.xterm .xterm-viewport::-webkit-scrollbar {
+  width: 10px;
+}
+
+.xterm .xterm-viewport::-webkit-scrollbar-thumb {
+  background: #414868;
+  border-radius: 5px;
+}
