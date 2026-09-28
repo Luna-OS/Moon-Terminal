@@ -51,7 +51,8 @@
       {
         "provider": "github",
         "owner": "Luna-OS",
-        "repo": "Moon-Terminal"
+        "repo": "Moon-Terminal",
+        "releaseType": "release"
       }
     ]
   }
