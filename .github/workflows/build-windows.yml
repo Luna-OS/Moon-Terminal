@@ -12,6 +12,10 @@ on:
         description: 'Create/update the GitHub Release with this build'
         type: boolean
         default: false
+      delete_release_ids:
+        description: 'Comma-separated GitHub release IDs to delete first (maintenance cleanup)'
+        type: string
+        default: ''
 
 permissions:
   contents: write
@@ -29,6 +33,18 @@ jobs:
         with:
           node-version: 20
 
+      - name: Delete stray release IDs (maintenance)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.delete_release_ids != '' }}
+        shell: bash
+        run: |
+          IFS=',' read -ra IDS <<< "${{ inputs.delete_release_ids }}"
+          for id in "${IDS[@]}"; do
+            echo "Deleting release id $id"
+            gh api -X DELETE "repos/${{ github.repository }}/releases/$id" || true
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Install dependencies
         run: npm ci
 
@@ -41,6 +57,26 @@ jobs:
           else
             echo "mode=never" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Read app version
+        id: appver
+        shell: bash
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Ensure the GitHub release exists before building
+        if: steps.publish.outputs.mode == 'always'
+        shell: bash
+        run: |
+          TAG="v${{ steps.appver.outputs.version }}"
+          if ! gh release view "$TAG" --repo "${{ github.repository }}" >/dev/null 2>&1; then
+            gh release create "$TAG" --repo "${{ github.repository }}" \
+              --title "${{ steps.appver.outputs.version }}" \
+              --notes "Automated Moon Terminal build."
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build (and optionally publish a GitHub Release)
         shell: bash
