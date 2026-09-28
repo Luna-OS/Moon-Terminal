@@ -1,0 +1,23 @@
+[
+  {
+    "comment": "Open a new tab with the Claude Code profile",
+    "keys": "ctrl+shift+m",
+    "command": {
+      "action": "newTab",
+      "profile": "Claude Code"
+    }
+  },
+  {
+    "comment": "Clear the whole scrollback + viewport - handy after a long Claude Code session",
+    "keys": "ctrl+shift+k",
+    "command": {
+      "action": "clearBuffer",
+      "clear": "all"
+    }
+  },
+  {
+    "comment": "Distraction-free focus mode (hides tabs/panes chrome) while reading Claude's output",
+    "keys": "ctrl+shift+z",
+    "command": "toggleFocusMode"
+  }
+]

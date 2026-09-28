@@ -1,0 +1,46 @@
+{
+  "$help": "https://aka.ms/terminal-documentation",
+  "$schema": "https://aka.ms/terminal-profiles-schema",
+  "profiles": [
+    {
+      "name": "Claude Code",
+      "commandline": "powershell.exe -NoExit -Command claude",
+      "icon": "🌙",
+      "colorScheme": "Moon Dark",
+      "font": {
+        "face": "Cascadia Code",
+        "size": 11
+      },
+      "cursorShape": "filledBox",
+      "opacity": 95,
+      "useAcrylic": true,
+      "padding": "8, 8, 8, 8",
+      "antialiasingMode": "cleartype"
+    }
+  ],
+  "schemes": [
+    {
+      "name": "Moon Dark",
+      "background": "#10121C",
+      "foreground": "#D8DEE9",
+      "black": "#1A1B26",
+      "red": "#F7768E",
+      "green": "#9ECE6A",
+      "yellow": "#E0C880",
+      "blue": "#7AA2F7",
+      "purple": "#BB9AF7",
+      "cyan": "#7DCFFF",
+      "white": "#C0CAF5",
+      "brightBlack": "#414868",
+      "brightRed": "#FF8095",
+      "brightGreen": "#B9F27C",
+      "brightYellow": "#F0D99B",
+      "brightBlue": "#8FB8FF",
+      "brightPurple": "#D1B8FF",
+      "brightCyan": "#A3E8FF",
+      "brightWhite": "#E8ECFB",
+      "cursorColor": "#E0C880",
+      "selectionBackground": "#364A82"
+    }
+  ]
+}
