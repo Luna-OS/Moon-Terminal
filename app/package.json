@@ -1,6 +1,6 @@
 {
   "name": "moon-terminal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A standalone Windows terminal app for Claude Code, in Moon Dark theme.",
   "main": "main.js",
   "author": "Luna",
@@ -9,7 +9,8 @@
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
     "start": "electron .",
-    "dist": "electron-builder --win"
+    "dist": "electron-builder --win nsis --x64 --publish never && electron-builder --win portable --x64 --publish never",
+    "dist:publish": "electron-builder --win nsis --x64 --publish always && electron-builder --win portable --x64 --publish always"
   },
   "dependencies": {
     "node-pty": "^1.1.0",
