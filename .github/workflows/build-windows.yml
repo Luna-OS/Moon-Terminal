@@ -43,7 +43,13 @@ jobs:
           fi
 
       - name: Build (and optionally publish a GitHub Release)
-        run: npm run dist -- --publish ${{ steps.publish.outputs.mode }}
+        shell: bash
+        run: |
+          if [ "${{ steps.publish.outputs.mode }}" = "always" ]; then
+            npm run dist:publish
+          else
+            npm run dist
+          fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
